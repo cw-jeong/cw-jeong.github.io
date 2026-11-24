@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오</title>
+    <!-- 프로그래밍 언어 아이콘 표시를 위한 Devicon CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<style>
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.65;
+            color: #111111;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            background-color: #ffffff;
+        }
+
+        /* 1. 닉네임과 이메일 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #111111;
+            margin-bottom: 24px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #111111;
+        }
+        header .email {
+            color: #555555;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        header .email:hover {
+            color: #111111;
+            text-decoration: underline;
+        }
+
+        /* 2. 나를 소개하는 문구 공간 (박스 제거) */
+        .intro-box {
+            padding: 0 0 36px 0;
+            margin-bottom: 44px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .interest-tag {
+            display: inline-block;
+            color: #555555;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .intro-box p {
+            margin: 0 0 20px 0;
+            font-size: 1.05rem;
+            color: #222222;
+        }
+        .btn-github {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #111111;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #111111;
+            background-color: transparent;
+            transition: all 0.15s ease;
+        }
+        .btn-github:hover {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        /* 공통 섹션 스타일 (상자 제거 + 이미지처럼 굵은 검정 밑줄) */
+        section {
+            margin-bottom: 52px;
+        }
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: #111111;
+            letter-spacing: -0.02em;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #111111;
+            margin: 0 0 20px 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        section > ul > li {
+            padding: 14px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        section > ul > li:last-child {
+            border-bottom: none;
+        }
+
+        /* 프로젝트 스타일 */
+        .project-item {
+            padding: 16px 0 24px 0 !important;
+            margin-bottom: 20px !important;
+            border-bottom: 1px solid #e5e7eb !important;
+        }
+        .project-item:last-child {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .project-title {
+            margin: 0;
+            color: #111111;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .status-badge {
+            color: #555555;
+            border: 1px solid #cccccc;
+            padding: 1px 8px;
+            border-radius: 3px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .project-meta {
+            list-style: none;
+            padding: 0;
+        }
+        .project-meta li {
+            margin-bottom: 8px;
+            color: #222222;
+            font-size: 0.96rem;
+        }
+        .project-meta strong {
+            display: inline-block;
+            width: 115px;
+            color: #666666;
+            font-weight: 600;
+        }
+
+        /* 이수 과목 스타일 (얇은 회색 실선 구분) */
+        .course-list {
+            list-style: none;
+            padding: 0;
+        }
+        .course-item {
+            padding: 16px 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .course-item:last-child {
+            border-bottom: none;
+        }
+        .course-title {
+            font-weight: 700;
+            color: #111111;
+            font-size: 1.02rem;
+        }
+        .course-period {
+            font-weight: 400;
+            color: #777777;
+            font-size: 0.88rem;
+            margin-left: 8px;
+        }
+        .course-desc {
+            margin: 6px 0 0 0;
+            color: #444444;
+            font-size: 0.93rem;
+            padding-left: 0;
+            border-left: none;
+        }
+
+        /* 언어 아이콘 그리드 (박스 테두리 제거) */
+        .icon-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            padding-top: 8px;
+        }
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 64px;
+            padding: 4px 0;
+            border: none;
+            background: transparent;
+        }
+        .icon-item i {
+            font-size: 2.3rem;
+            margin-bottom: 8px;
+        }
+        .icon-item span {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #222222;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 닉네임과 이메일 -->
+    <header>
+        <h1>CW_Jeong</h1>
+    </header>
+
+    <!-- 2. 나를 소개하는 문구 넣는 공간 -->
+    <div class="intro-box">
+        <span class="interest-tag">현재 관심 분야: 컴퓨터 네트워크 , 네트워크 보안</span>
+        <p>
+            안녕하세요. 네트워크 분야에 관심이 있는 컴퓨터공학 전공생입니다.<br>
+            네트워크 프로토콜을 깊이 이해하고 이를 실제 서비스 환경에 적용하는 엔지니어를 목표로 공부하고 있습니다.
+        </p>
+        <a href="https://github.com/cw-jeong" target="_blank" class="btn-github">GitHub 방문하기</a>
+    </div>
+
+    <!-- 3. 학력 -->
+    <section>
+        <h2>학력</h2>
+        <ul>
+            <li><strong>부산대학교</strong> 정보컴퓨터공학부 재학 (2022.03 ~ 현재)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>구현해보고 싶은 프로젝트</h2>
+
+        <!-- 프로젝트 1: 3번 네트워크 보안 / 패킷 분석 -->
+        <div class="project-item" style="margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px dashed #e2e8f0;">
+            <div class="project-header">
+                <h3 class="project-title">간이 패킷 필터링 로그 분석기</h3>
+                <span class="course-period">(진행 예정)</span>
+            </div>
+            <ul class="project-meta">
+                <li><strong>문제 정의:</strong> 리눅스 서버 운영 시 외부로부터 유입되는 무분별한 포트 스캐닝이나 TCP SYN 플러딩 공격을 수동 로그 확인만으로 즉각 대응하기 어려운 문제를 해결하고자 합니다.</li>
+                <li><strong>하고싶은 역할:</strong> 방화벽 자동 차단 연동과 로그 대시보드 구축의 기획 및 구현</li>
+                <li><strong>기술:</strong> Python (Scapy, Socket), Linux (iptables), HTML/CSS/JS</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. 자격증 -->
+    <section>
+        <h2>자격증</h2>
+        <ul>
+            <li>컴퓨터활용능력 1급 </li>
+            <li>정보처리기사 (취득 예정)</li>
+        </ul>
+    </section>
+
+    <!-- 6. 이수 과목 -->
+    <section>
+        <h2>이수 과목</h2>
+        <ul class="course-list">
+            <li class="course-item">
+                <div class="course-title">컴퓨터네트워크 <span class="course-period">2026.09 ~ </span></div>
+                <p class="course-desc">인터넷 5계층 및 TCP/IP 프로토콜 스택, 라우팅 알고리즘</p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">운영체제 <span class="course-period">2026.03 ~ 2026.06</span></div>
+                <p class="course-desc">프로세스 스케줄링, 메모리 관리 및 동기화 기법</p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">데이터통신 <span class="course-period">2026.03 ~ 2026.06 </span></div>
+                <p class="course-desc">아날로그·디지털 신호 변조, 다중화와 대역 확산, 오류 검출·정정(CRC, Hamming Code, FEC)</p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">C++ 프로그래밍과실습 <span class="course-period">2026.03 ~ 2026.06 </span></div>
+                <p class="course-desc">객체지향 프로그래밍 개념, 클래스·상속·다형성 및 STL 활용 </p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">자료구조 <span class="course-period">2025.09 ~ 2025.12 </span></div>
+                <p class="course-desc">스택·큐·트리·그래프 등 자료구조 구현 및 정렬·탐색 알고리즘의 시간 복잡도 분석</p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">시스템소프트웨어 <span class="course-period">2023.03 ~ 2023.06 </span></div>
+                <p class="course-desc">x86-64 기반 어셈블리·프로시저 동작 원리, 메모리 레이아웃 및 캐시 최적화 기법</p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">프로그래밍원리와실습 <span class="course-period">2022.09 ~ 2024.12</span></div>
+                <p class="course-desc">C 언어 기초 문법, 포인터와 메모리 주소  </p>
+            </li>
+            <li class="course-item">
+                <div class="course-title">컴퓨터및프로그래밍입문 <span class="course-period">2022.03 ~ 2022.06</span></div>
+                <p class="course-desc">Python 기초 문법, 자료형 및 함수 활용법</p>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>언어</h2>
+        <div class="icon-list">
+            <div class="icon-item">
+                <i class="devicon-python-plain colored"></i>
+                <span>Python</span>
+            </div>
+            <div class="icon-item">
+                <i class="devicon-cplusplus-plain colored"></i>
+                <span>C++</span>
+            </div>
+            <div class="icon-item">
+                <i class="devicon-java-plain colored"></i>
+                <span>Java</span>
+            </div>
+            <div class="icon-item">
+                <i class="devicon-javascript-plain colored"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="icon-item">
+                <i class="devicon-oracle-original colored"></i>
+                <span>Oracle</span>
+            </div>
+        </div>
+    </section>
+        
+
+
+</body>
+</html>
